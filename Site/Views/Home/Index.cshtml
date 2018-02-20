@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Business Tool System";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Date = DateTime.Now.ToLongDateString();
+}
+
+
+<div id="ContentPage" class="maxHeight"></div>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $(document).on("click", '.mnuOption', function () {
+
+        alertas.show();
+
+        var $id = $(this).attr("id");
+        var $url = $(this).attr("href");
+        $.post(
+            $url,
+            function (res) {
+                $("#ContentPage").html(res);
+                alertas.hide();
+            }, 'html'
+
+        );
+        return false;
+    });
+
+});
+
+</script>

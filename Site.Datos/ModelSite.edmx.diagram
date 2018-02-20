@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="84ea6671a998471e9135d5fc0062c95f" Name="Diagram1">
+        <EntityTypeShape EntityType="business_dbModel.adm_usuario" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_cliente" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_cxc" Width="1.5" PointX="7.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_cxc_detalle" Width="1.5" PointX="10" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_factura" Width="1.5" PointX="8" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_factura_detalle" Width="1.5" PointX="10.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_pedido" Width="1.5" PointX="13" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_pedido_detalle" Width="1.5" PointX="15.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_pedido_estado" Width="1.5" PointX="10.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_precio" Width="1.5" PointX="12.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_precio_detalle" Width="1.5" PointX="15" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_tipo_factura" Width="1.5" PointX="5.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_tipo_pago" Width="1.5" PointX="5.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.fac_vendedor" Width="1.5" PointX="5.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.inv_despacho" Width="1.5" PointX="12.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.inv_despacho_detalle" Width="1.5" PointX="15" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.inv_producto" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.inv_producto_stock" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.inv_producto_tipo" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.inv_proveedor" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.inv_trans" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.inv_trans_detalle" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.inv_ubicacion" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="business_dbModel.inv_unidad_medida" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="business_dbModel.FK_inv_ubicacion_adm_usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_fac_cxc_detalle_fac_cxc" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_fac_factura_detalle_fac_factura" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_fac_factura_fac_tipo_factura" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_fac_factura_fac_tipo_pago" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_fac_factura_fac_vendedor" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_fac_pedido_detalle_fac_pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_fac_pedido_fac_pedido_estado" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_fac_precio_detalle_fac_precio" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_inv_despacho_detalle_inv_despacho" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_inv_producto_inv_producto_tipo" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_inv_producto_inv_proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_inv_producto_inv_unidad_medida" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_inv_producto_stock_inv_producto" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_inv_trans_detalle_inv_producto" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_inv_producto_stock_inv_ubicacion" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_inv_trans_detalle_inv_trans" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_inv_trans_detalle_inv_ubicacion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,98 @@
+﻿@model Site.Datos.inv_trans_detalle
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>inv_trans_detalle</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.tde_cantidad)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tde_cantidad)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tde_descripcion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tde_descripcion)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tde_costo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tde_costo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tde_fecha_trans)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tde_fecha_trans)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tde_usuario_trans)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tde_usuario_trans)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tde_eliminado)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tde_eliminado)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.inv_producto.pro_codigo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.inv_producto.pro_codigo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.inv_trans.tra_usuario)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.inv_trans.tra_usuario)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.inv_ubicacion.ubi_codigo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.inv_ubicacion.ubi_codigo)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.tde_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

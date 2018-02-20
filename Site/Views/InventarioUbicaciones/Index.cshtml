@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Ubicaciones</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create", new { id = 0 }, new { data_modal = "", @class = "btn btn-info" })
+
+</p>
+
+
+<!-- modal placeholder-->
+<div id='myModal' class='modal fade' aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent' />
+        </div>
+    </div>
+</div>
+
+<div id="ajaxDetails">
+    @Html.Action("_List")
+</div>

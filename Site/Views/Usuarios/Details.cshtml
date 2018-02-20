@@ -1,0 +1,67 @@
+﻿@model Site.Datos.adm_usuario
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>adm_usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.usr_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usr_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usr_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usr_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usr_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usr_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usr_fecha_tran)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usr_fecha_tran)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usr_usuario_tran)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usr_usuario_tran)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usr_eliminado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usr_eliminado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.usr_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

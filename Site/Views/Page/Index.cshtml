@@ -1,0 +1,321 @@
+﻿
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        @Html.Editor("id")
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+<br />
+
+<a href="javascript:;" onclick="jQuery('#modal-6').modal('show', {backdrop: 'static'});" class="btn btn-default">Modal</a>
+
+<!-- Modal 6 (Long Modal)-->
+<div class="modal fade" id="modal-6">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal Content is Responsive</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="field-1" class="control-label">Name</label>
+
+                            <input type="text" class="form-control" id="field-1" placeholder="John" data-validate="required" data-message-required="This is custom message for required field.">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Surname</label>
+
+                            <input type="text" class="form-control" id="field-2" placeholder="Doe">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <label for="field-3" class="control-label">Address</label>
+
+                            <input type="text" class="form-control" id="field-3" placeholder="Address">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">City</label>
+
+                            <input type="text" class="form-control" id="field-4" placeholder="Boston">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="form-group">
+                            <label for="field-5" class="control-label">Country</label>
+
+                            <input type="text" class="form-control" id="field-5" placeholder="United States">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="form-group">
+                            <label for="field-6" class="control-label">Zip</label>
+
+                            <input type="text" class="form-control" id="field-6" placeholder="123456">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label">Personal Info</label>
+
+                            <textarea class="form-control autogrow" id="field-7" placeholder="Write something about yourself"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th width="25%">Example, Live Preview</th>
+            <th>Usage Directions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td align="center" class="middle-align">
+                <a href="javascript:;" onclick="toastr.info('Are you the 6 fingered man?');" class="btn btn-info">Information Message</a>
+            </td>
+            <td>
+                Simple <strong>Toastr</strong> notification. To fire this notification the code below is executed:
+                <br />
+                <br />
+                <pre>toastr.info('Are you the 6 fingered man?');</pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="center" class="middle-align">
+                <a href="#" id="success_msg_1" class="btn btn-success">Success Message</a>
+            </td>
+            <td>
+                More advanced <strong>Toastr</strong> notification. It has <strong>close button</strong> and <strong>title</strong>.
+
+                To fire this notification the code below is executed:
+                <br />
+                <br />
+                <pre>var opts = {
+			&quot;closeButton&quot;: true,
+			&quot;debug&quot;: false,
+			&quot;positionClass&quot;: &quot;toast-bottom-left&quot;,
+			&quot;onclick&quot;: null,
+			&quot;showDuration&quot;: &quot;300&quot;,
+			&quot;hideDuration&quot;: &quot;1000&quot;,
+			&quot;timeOut&quot;: &quot;5000&quot;,
+			&quot;extendedTimeOut&quot;: &quot;1000&quot;,
+			&quot;showEasing&quot;: &quot;swing&quot;,
+			&quot;hideEasing&quot;: &quot;linear&quot;,
+			&quot;showMethod&quot;: &quot;fadeIn&quot;,
+			&quot;hideMethod&quot;: &quot;fadeOut&quot;
+		};
+		
+		toastr.success(&quot;So me by marianne admitted speaking.&quot;, &quot;This is a title&quot;, opts);</pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="center" class="middle-align">
+                <a href="#" id="danger_msg_1" class="btn btn-danger">Danger Message</a>
+            </td>
+            <td>
+                This notification will be placed as full-width on top. It has <strong>close button</strong> and <strong>title</strong>.
+
+                To fire this notification the code below is executed:
+                <br />
+                <br />
+                <pre>var opts = {
+			&quot;closeButton&quot;: true,
+			&quot;debug&quot;: false,
+			&quot;positionClass&quot;: &quot;toast-top-full-width&quot;,
+			&quot;onclick&quot;: null,
+			&quot;showDuration&quot;: &quot;300&quot;,
+			&quot;hideDuration&quot;: &quot;1000&quot;,
+			&quot;timeOut&quot;: &quot;5000&quot;,
+			&quot;extendedTimeOut&quot;: &quot;1000&quot;,
+			&quot;showEasing&quot;: &quot;swing&quot;,
+			&quot;hideEasing&quot;: &quot;linear&quot;,
+			&quot;showMethod&quot;: &quot;fadeIn&quot;,
+			&quot;hideMethod&quot;: &quot;fadeOut&quot;
+		};
+		
+		toastr.error(&quot;Do to be agreeable conveying oh assurance. Wicket longer admire do barton vanity itself do in it. Preferred to sportsmen it engrossed listening.&quot;, &quot;Fanny at wrong table ye in&quot;, opts);</pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="center" class="middle-align">
+                <a href="#" id="warning_msg_1" class="btn btn-warning">Warning Message</a>
+            </td>
+            <td>
+                This notification will be placed on bottom-right. It has <strong>close button</strong> and <strong>title</strong>.
+
+                To fire this notification the code below is executed:
+                <br />
+                <br />
+                <pre>var opts = {
+			&quot;closeButton&quot;: true,
+			&quot;debug&quot;: false,
+			&quot;positionClass&quot;: &quot;toast-bottom-right&quot;,
+			&quot;onclick&quot;: null,
+			&quot;showDuration&quot;: &quot;300&quot;,
+			&quot;hideDuration&quot;: &quot;1000&quot;,
+			&quot;timeOut&quot;: &quot;5000&quot;,
+			&quot;extendedTimeOut&quot;: &quot;1000&quot;,
+			&quot;showEasing&quot;: &quot;swing&quot;,
+			&quot;hideEasing&quot;: &quot;linear&quot;,
+			&quot;showMethod&quot;: &quot;fadeIn&quot;,
+			&quot;hideMethod&quot;: &quot;fadeOut&quot;
+		};
+		
+		toastr.warning(&quot;Park gate sell they west hard for the.&quot;, null, opts);</pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
+        $("input").addClass("form-control");
+
+
+
+        $("#success_msg_1").click(function (ev) {
+            ev.preventDefault();
+
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-bottom-left",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            toastr.success("So me by marianne admitted speaking.", "This is a title", opts);
+        });
+
+        $("#danger_msg_1").click(function (ev) {
+            ev.preventDefault();
+
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-full-width",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            toastr.error("Do to be agreeable conveying oh assurance. Wicket longer admire do barton vanity itself do in it. Preferred to sportsmen it engrossed listening.", "Fanny at wrong table ye in", opts);
+        });
+
+        $("#warning_msg_1").click(function (ev) {
+            ev.preventDefault();
+
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            toastr.warning("Park gate sell they west hard for the.", null, opts);
+        });
+
+        setTimeout("$.unblockUI()", 100);
+    });
+</script>

@@ -1,0 +1,82 @@
+﻿@model Site.Datos.inv_producto_stock
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>inv_producto_stock</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.sto_cantidad)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sto_cantidad)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sto_costo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sto_costo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sto_fecha_tran)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sto_fecha_tran)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sto_usuario_tran)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sto_usuario_tran)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sto_eliminado)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sto_eliminado)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.inv_producto.pro_codigo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.inv_producto.pro_codigo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.inv_ubicacion.ubi_codigo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.inv_ubicacion.ubi_codigo)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.sto_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

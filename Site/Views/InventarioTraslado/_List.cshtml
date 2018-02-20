@@ -1,0 +1,97 @@
+﻿@using Site.Datos;
+@using Site.Helpers;
+@model Site.Models.GenericVM<inv_producto_stock> 
+
+<div class="form-inline actions-toolbar">
+    <div class="actions-toolbar-inner">
+
+        <div class="row">
+            <div class="col-md-12">
+                <label class="control-label">Valor a buscar:</label>
+
+                <input type="text" name="filter" value="@Model.filter"
+                       class="form-control dev-txt-filter input-width-xlarge" id="filter" style="margin-right:5px;"
+                       data-original-title="Valor de busqueda" data-toggle="tooltip" data-placement="top"
+                       data-url="@Url.Action("_List", new {filter=Model.filter,page=Model.paging.CurrentPage,pageSize=Model.paging.ItemsPerPage })" />
+                <button type="button" class="btn btn-primary dev-filter-ajax" id="btnFilter"
+                        data-url="@Url.Action("_List", new {filter=Model.filter,page=Model.paging.CurrentPage,pageSize=Model.paging.ItemsPerPage })"
+                        data-target="#filter">
+                    <i class="icon-filter icon-white"></i>Filtrar
+                </button>
+                <button type="button" class="btn dev-filter-ajax"
+                        data-url="@Url.Action("_List", new {filter="",page=Model.paging.CurrentPage,pageSize=Model.paging.ItemsPerPage })"
+                        data-target="#filter" data-clear>
+                    <i class="icon-remove"></i>
+                    Limpiar
+                </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br />
+
+    <table class="table table-striped table-bordered table-hover table-checkable table-responsive datatable">
+        <tr>
+            <th>
+                Codigo
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Ubicacion
+            </th>
+            <th>
+                Cantidad
+            </th>
+            <th>
+                
+            </th>
+            
+        </tr>
+
+        @foreach (var item in Model.Lista)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.inv_producto.pro_codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.inv_producto.pro_descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.inv_ubicacion.ubi_descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sto_cantidad)
+                </td>
+                <td>
+                    @Html.ActionLink("Mover", "Edit", new { id = item.sto_id }, new { data_modal = "" }) 
+                </td>
+            </tr>
+        }
+
+    </table>
+
+<div class="dataTables_paginate paging_bootstrap">
+    <div class="row-fluid actions-toolbar">
+        <div class="actions-toolbar-inner">
+            @Html.Paginar(Model.paging, pag => Url.Action("_List", new
+   {
+       page = pag,
+       Model.filter,
+       pageSize = Model.paging.ItemsPerPage
+   }))
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
+        reloadModalBinding();
+    });
+</script>

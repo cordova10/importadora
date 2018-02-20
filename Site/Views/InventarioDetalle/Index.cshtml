@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    <link rel="stylesheet" href="@Url.Content("~/Scripts/fileUpload/jquery.fileupload.css")" />
+   
+}
+
+<h2>@ViewBag.Titulo</h2>
+<div style="display: inline-flex">
+    @Html.ActionLink("Nuevo", "Create", new { IdTrans = ViewBag.IdTrans }, new { @class = "btn btn-info", data_modal = "" })
+    <form action="@Url.Action("LoadIn")" enctype="multipart/form-data" id="formuploadajax">
+        <span class="btn btn-success fileinput-button">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>Cargar entradas</span>
+            <!-- The file input field used as target for the file upload widget -->
+
+            <input id="fileupload" type="file" name="file" multiple>
+            <input type="hidden" name="id_trans" value="@ViewBag.IdTrans" />
+        </span>
+        <img src="@Url.Content("~/img/ajax-loader.gif")" width="30" id="dev-img-loader"  style="display:none;" />
+    </form>
+    <a class="btn" id="dev-errores" style="display:none;" target="_blank">Errores</a>
+</div>
+
+<p>&nbsp;</p>
+<!-- modal placeholder-->
+<div id='myModal' class='modal fade' aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent' />
+        </div>
+    </div>
+</div>
+
+<div id="ajaxDetails">
+    @Html.Action("_List", new { id = ViewBag.IdTrans })
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        var $l = $("#dev-img-loader");
+        var $f = $("#fileupload");      
+        $f.change(function () {
+          
+            if ($f.val() != '') {
+                
+                $l.show();
+                $('#dev-errores').hide();
+                var formData = new FormData(document.getElementById("formuploadajax"));
+                $.ajax({
+                    url: $('#formuploadajax').attr('action'),
+                    type: "post",
+                    dataType: "json",
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (res) {
+                        $l.hide();
+                        if (res.status == 'error') {
+                            alert(res.msg);
+                        } else { //ok
+                            if (res.link_error != '') {
+                                alert('Hay errores al procesar');
+                                $('#dev-errores').show();
+                                $('#dev-errores').attr('href',res.link_error);
+                            }
+                           
+                            $('#ajaxDetails').html(res.html);
+                        }
+                    },
+                    error: function () {
+                        $l.hide();
+                        alert('error en el servidor');
+                    }
+                })
+               
+            }
+        });
+    });
+</script>

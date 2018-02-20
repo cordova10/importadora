@@ -1,0 +1,102 @@
+﻿@model Site.Models.ProductoUbicacion
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+    List<Site.Datos.inv_ubicacion> ListaUbicaciones = ViewBag.listaUbicaciones;
+    List<Site.Datos.inv_ubicacion> ListaUbicacionesDestinos= new List<Site.Datos.inv_ubicacion>();
+    ListaUbicacionesDestinos.AddRange(ListaUbicaciones);
+    ListaUbicacionesDestinos.RemoveAll(x => x.ubi_id == Model.producto.sto_ubicacion);
+}
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Mover Producto</h4>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div class="modal-body">
+
+      
+
+        @Html.HiddenFor(model => model.producto.sto_id)
+        @Html.HiddenFor(model => model.producto.sto_ubicacion)
+        @Html.HiddenFor(model => model.producto.sto_cantidad)
+        @Html.HiddenFor(model => model.producto.sto_costo)
+        @Html.HiddenFor(model => model.producto.sto_producto)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                   CODIGO PRODUCTO
+                    @Html.EditorFor(model => model.producto.inv_producto.pro_codigo, new { htmlAttributes = new { @class = "form-control dev-readonly",@readonly=true } })
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    DESCRIPCION DE PRODUCTO
+                    @Html.EditorFor(model => model.producto.inv_producto.pro_descripcion, new { htmlAttributes = new { @class = "form-control dev-readonly", @readonly = true } })
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                  UBICACION ACTUAL
+                   
+                    @Html.DropDownListFor(x => x.producto.sto_ubicacion, new SelectList(ListaUbicaciones, "ubi_id","ubi_descripcion"),new { @class = "form-control dev-readonly", @disabled = true })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    CANTIDAD ACTUAL
+                    @Html.EditorFor(model => model.producto.sto_cantidad, new { htmlAttributes = new { @class = "form-control dev-readonly", @readonly = true } })
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    UBICACION DESTINO
+
+                    @Html.DropDownListFor(x => x.ubicacion_mover, new SelectList(ListaUbicacionesDestinos, "ubi_id", "ubi_descripcion"),"[Seleccione]", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.ubicacion_mover)
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    CANTIDAD A MOVER
+                    @Html.EditorFor(model => model.cantidad_mover, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(x => x.cantidad_mover)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-info">Guardar Cambios</button>
+    </div>
+}
+
+
+<script type="text/javascript" src="Scripts/jquery.validate.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

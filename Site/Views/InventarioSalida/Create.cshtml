@@ -1,0 +1,61 @@
+﻿@model Site.Datos.inv_trans
+
+@{
+    ViewBag.Title = "";
+    Layout = null;
+}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Crear Registro</h4>
+</div>
+
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="modal-body">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        Fecha
+                        @Html.EditorFor(model => model.tra_fecha, new { htmlAttributes = new { @class = "form-control datepicker", @data_format = "dd/mm/yyyy" } })
+                        @Html.ValidationMessageFor(model => model.tra_fecha, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        Comentario
+                        @Html.EditorFor(model => model.tra_comentario, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.tra_comentario, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-info">Guardar Cambios</button>
+
+
+        </div>
+    }
+
+<script>
+    $(document).ready(function ()
+    {
+        $(".datepicker").datepicker({
+            dateFormat: 'dd/mm/yy'
+        });
+    });
+</script>

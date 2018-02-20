@@ -1,0 +1,82 @@
+﻿@model Site.Datos.inv_trans
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>inv_trans</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.tra_fecha)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tra_fecha)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tra_usuario)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tra_usuario)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tra_tipo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tra_tipo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tra_comentario)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tra_comentario)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tra_fecha_trans)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tra_fecha_trans)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tra_usuario_trans)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tra_usuario_trans)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tra_eliminado)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tra_eliminado)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.tra_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

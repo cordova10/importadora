@@ -1,0 +1,70 @@
+﻿@model Site.Datos.inv_ubicacion
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+   
+}
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Eliminar Ubicacion</h4>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div class="modal-body">
+
+      
+
+        @Html.HiddenFor(model => model.ubi_id)
+       @Html.HiddenFor(model => model.ubi_fecha_tran)
+        @Html.HiddenFor(model => model.ubi_usuario_tran)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                   CODIGO PRODUCTO
+                    @Html.EditorFor(model => model.ubi_codigo, new { htmlAttributes = new { @class = "form-control" } })
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    DESCRIPCION DE UBICACION
+                    <br />
+                    @Html.TextAreaFor(model => model.ubi_descripcion, new { @class = "form-control",style="width:100%"  })
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                  ACTIVO
+                   
+                    @Html.CheckBoxFor(x => x.ubi_activo)
+                </div>
+            </div>
+        </div>
+
+        
+
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-info">Guardar</button>
+    </div>
+}
+
+
+<script type="text/javascript" src="Scripts/jquery.validate.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

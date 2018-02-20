@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Traslado de Productos</h2>
+
+
+
+<!-- modal placeholder-->
+<div id='myModal' class='modal fade' aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent' />
+        </div>
+    </div>
+</div>
+
+<div id="ajaxDetails">
+    @Html.Action("_List")
+</div>
