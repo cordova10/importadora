@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="business_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="business_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="adm_usuario">
           <Key>
             <PropertyRef Name="usr_id" />
@@ -221,6 +221,7 @@
           </Key>
           <Property Name="pro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="pro_codigo" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="pro_codigo_bar" Type="varchar" MaxLength="15" />
           <Property Name="pro_descripcion" Type="varchar" MaxLength="70" />
           <Property Name="pro_unidad_medida" Type="int" />
           <Property Name="pro_tipo" Type="int" />
@@ -522,18 +523,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_inv_ubicacion_adm_usuario">
-          <End Role="adm_usuario" Type="Self.adm_usuario" Multiplicity="1" />
-          <End Role="inv_ubicacion" Type="Self.inv_ubicacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="adm_usuario">
-              <PropertyRef Name="usr_id" />
-            </Principal>
-            <Dependent Role="inv_ubicacion">
-              <PropertyRef Name="ubi_usuario_tran" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="business_dbModelStoreContainer">
           <EntitySet Name="adm_usuario" EntityType="Self.adm_usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="fac_cliente" EntityType="Self.fac_cliente" Schema="dbo" store:Type="Tables" />
@@ -627,13 +616,8 @@
             <End Role="inv_ubicacion" EntitySet="inv_ubicacion" />
             <End Role="inv_trans_detalle" EntitySet="inv_trans_detalle" />
           </AssociationSet>
-          <AssociationSet Name="FK_inv_ubicacion_adm_usuario" Association="Self.FK_inv_ubicacion_adm_usuario">
-            <End Role="adm_usuario" EntitySet="adm_usuario" />
-            <End Role="inv_ubicacion" EntitySet="inv_ubicacion" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="business_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -887,6 +871,7 @@
           <NavigationProperty Name="inv_unidad_medida" Relationship="Self.FK_inv_producto_inv_unidad_medida" FromRole="inv_producto" ToRole="inv_unidad_medida" />
           <NavigationProperty Name="inv_producto_stock" Relationship="Self.FK_inv_producto_stock_inv_producto" FromRole="inv_producto" ToRole="inv_producto_stock" />
           <NavigationProperty Name="inv_trans_detalle" Relationship="Self.FK_inv_trans_detalle_inv_producto" FromRole="inv_producto" ToRole="inv_trans_detalle" />
+          <Property Name="pro_codigo_bar" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="inv_producto_stock">
           <Key>
@@ -1535,6 +1520,7 @@
           <EntitySetMapping Name="inv_producto">
             <EntityTypeMapping TypeName="business_dbModel.inv_producto">
               <MappingFragment StoreEntitySet="inv_producto">
+                <ScalarProperty Name="pro_codigo_bar" ColumnName="pro_codigo_bar" />
                 <ScalarProperty Name="pro_id" ColumnName="pro_id" />
                 <ScalarProperty Name="pro_codigo" ColumnName="pro_codigo" />
                 <ScalarProperty Name="pro_descripcion" ColumnName="pro_descripcion" />

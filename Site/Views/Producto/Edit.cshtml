@@ -32,6 +32,16 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
+                    Codigo Barra
+                    @Html.EditorFor(model => model.pro_codigo_bar, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.pro_codigo_bar, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
                     Descripcion
                     @Html.EditorFor(model => model.pro_descripcion, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.pro_descripcion, "", new { @class = "text-danger" })

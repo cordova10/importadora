@@ -33,6 +33,7 @@ namespace Site.Datos
         public System.DateTime pro_fecha_tran { get; set; }
         public int pro_usuario_tran { get; set; }
         public bool pro_eliminado { get; set; }
+        public string pro_codigo_bar { get; set; }
     
         public virtual inv_producto_tipo inv_producto_tipo { get; set; }
         public virtual inv_proveedor inv_proveedor { get; set; }

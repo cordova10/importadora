@@ -19,7 +19,7 @@ namespace Site.Datos
             : base("name=DBEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
