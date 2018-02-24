@@ -34,7 +34,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     Producto
-                    @Html.DropDownList("tde_producto", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("tde_producto", null, htmlAttributes: new { @class = "form-control select2" })
                     @Html.ValidationMessageFor(model => model.tde_producto, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -54,7 +54,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     Ubicacion
-                    @Html.DropDownList("tde_ubicacion", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("tde_ubicacion", null, htmlAttributes: new { @class = "form-control select2" })
                     @Html.ValidationMessageFor(model => model.tde_ubicacion, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -73,6 +73,7 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
+        $('.select2').select2();
         $('#tde_producto').val('@ViewBag.idProducto');
         $('#tde_ubicacion').val('@ViewBag.idUbicacion');
     });
