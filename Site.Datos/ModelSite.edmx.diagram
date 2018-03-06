@@ -47,6 +47,7 @@
         <AssociationConnector Association="business_dbModel.FK_inv_producto_stock_inv_ubicacion" ManuallyRouted="false" />
         <AssociationConnector Association="business_dbModel.FK_inv_trans_detalle_inv_trans" ManuallyRouted="false" />
         <AssociationConnector Association="business_dbModel.FK_inv_trans_detalle_inv_ubicacion" ManuallyRouted="false" />
+        <AssociationConnector Association="business_dbModel.FK_fac_factura_fac_cliente" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

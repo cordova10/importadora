@@ -21,10 +21,10 @@ namespace Site.Datos
         }
     
         public int ped_id { get; set; }
-        public Nullable<int> ped_numero { get; set; }
-        public Nullable<System.DateTime> ped_fecha { get; set; }
-        public Nullable<int> ped_cliente { get; set; }
-        public Nullable<int> ped_vendedor { get; set; }
+        public int ped_numero { get; set; }
+        public System.DateTime ped_fecha { get; set; }
+        public int ped_cliente { get; set; }
+        public int ped_vendedor { get; set; }
         public Nullable<int> ped_estado { get; set; }
         public Nullable<int> ped_factura { get; set; }
         public Nullable<bool> ped_eliminado { get; set; }

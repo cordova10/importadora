@@ -14,6 +14,12 @@ namespace Site.Datos
     
     public partial class fac_cliente
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public fac_cliente()
+        {
+            this.fac_factura = new HashSet<fac_factura>();
+        }
+    
         public int cli_id { get; set; }
         public string cli_nombres { get; set; }
         public string cli_direccion { get; set; }
@@ -23,5 +29,12 @@ namespace Site.Datos
         public System.DateTime cli_fecha_tran { get; set; }
         public int cli_usuario_tran { get; set; }
         public int cli_eliminado { get; set; }
+        public string cli_email { get; set; }
+        public Nullable<int> cli_tipo_pago { get; set; }
+        public Nullable<decimal> cli_limite_credito { get; set; }
+        public Nullable<decimal> cli_retencion_porcentaje { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<fac_factura> fac_factura { get; set; }
     }
 }

@@ -25,8 +25,8 @@ namespace Site.Datos
         public int fac_tipo_factura { get; set; }
         public int fac_tipo_pago { get; set; }
         public Nullable<int> fac_caja { get; set; }
-        public Nullable<System.DateTime> fac_fecha { get; set; }
-        public Nullable<int> fac_numero { get; set; }
+        public System.DateTime fac_fecha { get; set; }
+        public int fac_numero { get; set; }
         public string fac_no_registro { get; set; }
         public string fac_cliente { get; set; }
         public Nullable<int> fac_vendedor { get; set; }
@@ -37,11 +37,14 @@ namespace Site.Datos
         public Nullable<bool> fac_eliminado { get; set; }
         public Nullable<int> fac_usuario_tran { get; set; }
         public Nullable<System.DateTime> fac_fecha_tran { get; set; }
+        public Nullable<int> fac_id_cliente { get; set; }
+        public Nullable<decimal> fac_retension { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<fac_factura_detalle> fac_factura_detalle { get; set; }
         public virtual fac_tipo_factura fac_tipo_factura1 { get; set; }
         public virtual fac_tipo_pago fac_tipo_pago1 { get; set; }
         public virtual fac_vendedor fac_vendedor1 { get; set; }
+        public virtual fac_cliente fac_cliente1 { get; set; }
     }
 }

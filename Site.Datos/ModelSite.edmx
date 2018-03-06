@@ -24,8 +24,12 @@
           <Property Name="cli_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cli_nombres" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="cli_direccion" Type="varchar" MaxLength="200" />
-          <Property Name="cli_no_registro" Type="varchar" MaxLength="10" />
           <Property Name="cli_telefono" Type="varchar" MaxLength="15" />
+          <Property Name="cli_email" Type="varchar" MaxLength="100" />
+          <Property Name="cli_no_registro" Type="varchar" MaxLength="10" />
+          <Property Name="cli_tipo_pago" Type="int" />
+          <Property Name="cli_limite_credito" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cli_retencion_porcentaje" Type="decimal" Precision="18" Scale="2" />
           <Property Name="cli_activo" Type="bit" Nullable="false" />
           <Property Name="cli_fecha_tran" Type="datetime" Nullable="false" />
           <Property Name="cli_usuario_tran" Type="int" Nullable="false" />
@@ -65,18 +69,20 @@
           <Property Name="fac_tipo_factura" Type="int" Nullable="false" />
           <Property Name="fac_tipo_pago" Type="int" Nullable="false" />
           <Property Name="fac_caja" Type="int" />
-          <Property Name="fac_fecha" Type="date" />
-          <Property Name="fac_numero" Type="int" />
+          <Property Name="fac_fecha" Type="date" Nullable="false" />
+          <Property Name="fac_numero" Type="int" Nullable="false" />
           <Property Name="fac_no_registro" Type="varchar" MaxLength="10" />
+          <Property Name="fac_id_cliente" Type="int" />
           <Property Name="fac_cliente" Type="varchar" MaxLength="70" />
           <Property Name="fac_vendedor" Type="int" />
+          <Property Name="fac_retension" Type="decimal" Precision="18" Scale="4" />
           <Property Name="fac_monto" Type="decimal" Precision="18" Scale="4" />
           <Property Name="fac_impuesto" Type="decimal" Precision="18" Scale="4" />
           <Property Name="fac_total" Type="decimal" Precision="18" Scale="4" />
           <Property Name="fac_nota" Type="varchar" MaxLength="70" />
-          <Property Name="fac_eliminado" Type="bit" />
           <Property Name="fac_usuario_tran" Type="int" />
           <Property Name="fac_fecha_tran" Type="datetime" />
+          <Property Name="fac_eliminado" Type="bit" />
         </EntityType>
         <EntityType Name="fac_factura_detalle">
           <Key>
@@ -100,10 +106,10 @@
             <PropertyRef Name="ped_id" />
           </Key>
           <Property Name="ped_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ped_numero" Type="int" />
-          <Property Name="ped_fecha" Type="date" />
-          <Property Name="ped_cliente" Type="int" />
-          <Property Name="ped_vendedor" Type="int" />
+          <Property Name="ped_numero" Type="int" Nullable="false" />
+          <Property Name="ped_fecha" Type="date" Nullable="false" />
+          <Property Name="ped_cliente" Type="int" Nullable="false" />
+          <Property Name="ped_vendedor" Type="int" Nullable="false" />
           <Property Name="ped_estado" Type="int" />
           <Property Name="ped_factura" Type="int" />
           <Property Name="ped_eliminado" Type="bit" />
@@ -343,6 +349,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_fac_factura_fac_cliente">
+          <End Role="fac_cliente" Type="Self.fac_cliente" Multiplicity="0..1" />
+          <End Role="fac_factura" Type="Self.fac_factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fac_cliente">
+              <PropertyRef Name="cli_id" />
+            </Principal>
+            <Dependent Role="fac_factura">
+              <PropertyRef Name="fac_id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_fac_factura_fac_tipo_factura">
           <End Role="fac_tipo_factura" Type="Self.fac_tipo_factura" Multiplicity="1" />
           <End Role="fac_factura" Type="Self.fac_factura" Multiplicity="*" />
@@ -556,6 +574,10 @@
             <End Role="fac_factura" EntitySet="fac_factura" />
             <End Role="fac_factura_detalle" EntitySet="fac_factura_detalle" />
           </AssociationSet>
+          <AssociationSet Name="FK_fac_factura_fac_cliente" Association="Self.FK_fac_factura_fac_cliente">
+            <End Role="fac_cliente" EntitySet="fac_cliente" />
+            <End Role="fac_factura" EntitySet="fac_factura" />
+          </AssociationSet>
           <AssociationSet Name="FK_fac_factura_fac_tipo_factura" Association="Self.FK_fac_factura_fac_tipo_factura">
             <End Role="fac_tipo_factura" EntitySet="fac_tipo_factura" />
             <End Role="fac_factura" EntitySet="fac_factura" />
@@ -647,6 +669,11 @@
           <Property Name="cli_fecha_tran" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="cli_usuario_tran" Type="Int32" Nullable="false" />
           <Property Name="cli_eliminado" Type="Int32" Nullable="false" />
+          <Property Name="cli_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cli_tipo_pago" Type="Int32" />
+          <Property Name="cli_limite_credito" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cli_retencion_porcentaje" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="fac_factura" Relationship="business_dbModel.FK_fac_factura_fac_cliente" FromRole="fac_cliente" ToRole="fac_factura" />
         </EntityType>
         <EntityType Name="fac_cxc">
           <Key>
@@ -684,8 +711,8 @@
           <Property Name="fac_tipo_factura" Type="Int32" Nullable="false" />
           <Property Name="fac_tipo_pago" Type="Int32" Nullable="false" />
           <Property Name="fac_caja" Type="Int32" />
-          <Property Name="fac_fecha" Type="DateTime" Precision="0" />
-          <Property Name="fac_numero" Type="Int32" />
+          <Property Name="fac_fecha" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="fac_numero" Type="Int32" Nullable="false" />
           <Property Name="fac_no_registro" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="fac_cliente" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="fac_vendedor" Type="Int32" />
@@ -700,6 +727,9 @@
           <NavigationProperty Name="fac_tipo_factura1" Relationship="Self.FK_fac_factura_fac_tipo_factura" FromRole="fac_factura" ToRole="fac_tipo_factura" />
           <NavigationProperty Name="fac_tipo_pago1" Relationship="Self.FK_fac_factura_fac_tipo_pago" FromRole="fac_factura" ToRole="fac_tipo_pago" />
           <NavigationProperty Name="fac_vendedor1" Relationship="Self.FK_fac_factura_fac_vendedor" FromRole="fac_factura" ToRole="fac_vendedor" />
+          <Property Name="fac_id_cliente" Type="Int32" />
+          <Property Name="fac_retension" Type="Decimal" Precision="18" Scale="4" />
+          <NavigationProperty Name="fac_cliente1" Relationship="business_dbModel.FK_fac_factura_fac_cliente" FromRole="fac_factura" ToRole="fac_cliente" />
         </EntityType>
         <EntityType Name="fac_factura_detalle">
           <Key>
@@ -724,10 +754,10 @@
             <PropertyRef Name="ped_id" />
           </Key>
           <Property Name="ped_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ped_numero" Type="Int32" />
-          <Property Name="ped_fecha" Type="DateTime" Precision="0" />
-          <Property Name="ped_cliente" Type="Int32" />
-          <Property Name="ped_vendedor" Type="Int32" />
+          <Property Name="ped_numero" Type="Int32" Nullable="false" />
+          <Property Name="ped_fecha" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="ped_cliente" Type="Int32" Nullable="false" />
+          <Property Name="ped_vendedor" Type="Int32" Nullable="false" />
           <Property Name="ped_estado" Type="Int32" />
           <Property Name="ped_factura" Type="Int32" />
           <Property Name="ped_eliminado" Type="Boolean" />
@@ -1284,7 +1314,23 @@
             <End Role="inv_ubicacion" EntitySet="inv_ubicacion" />
             <End Role="inv_trans_detalle" EntitySet="inv_trans_detalle" />
           </AssociationSet>
+          <AssociationSet Name="FK_fac_factura_fac_cliente" Association="business_dbModel.FK_fac_factura_fac_cliente">
+            <End Role="fac_cliente" EntitySet="fac_cliente" />
+            <End Role="fac_factura" EntitySet="fac_factura" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_fac_factura_fac_cliente">
+          <End Type="business_dbModel.fac_cliente" Role="fac_cliente" Multiplicity="0..1" />
+          <End Type="business_dbModel.fac_factura" Role="fac_factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fac_cliente">
+              <PropertyRef Name="cli_id" />
+            </Principal>
+            <Dependent Role="fac_factura">
+              <PropertyRef Name="fac_id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1307,6 +1353,10 @@
           <EntitySetMapping Name="fac_cliente">
             <EntityTypeMapping TypeName="business_dbModel.fac_cliente">
               <MappingFragment StoreEntitySet="fac_cliente">
+                <ScalarProperty Name="cli_retencion_porcentaje" ColumnName="cli_retencion_porcentaje" />
+                <ScalarProperty Name="cli_limite_credito" ColumnName="cli_limite_credito" />
+                <ScalarProperty Name="cli_tipo_pago" ColumnName="cli_tipo_pago" />
+                <ScalarProperty Name="cli_email" ColumnName="cli_email" />
                 <ScalarProperty Name="cli_id" ColumnName="cli_id" />
                 <ScalarProperty Name="cli_nombres" ColumnName="cli_nombres" />
                 <ScalarProperty Name="cli_direccion" ColumnName="cli_direccion" />
@@ -1349,6 +1399,8 @@
           <EntitySetMapping Name="fac_factura">
             <EntityTypeMapping TypeName="business_dbModel.fac_factura">
               <MappingFragment StoreEntitySet="fac_factura">
+                <ScalarProperty Name="fac_retension" ColumnName="fac_retension" />
+                <ScalarProperty Name="fac_id_cliente" ColumnName="fac_id_cliente" />
                 <ScalarProperty Name="fac_id" ColumnName="fac_id" />
                 <ScalarProperty Name="fac_serie" ColumnName="fac_serie" />
                 <ScalarProperty Name="fac_tipo_factura" ColumnName="fac_tipo_factura" />
